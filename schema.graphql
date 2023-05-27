@@ -1,0 +1,10 @@
+type Query {
+  getEthByAddress: ETH_RESULT!
+  getTotalSupplyEth: ETH_RESULT!
+}
+
+type ETH_RESULT {
+  status: String!
+  message: String!
+  result: String!
+}

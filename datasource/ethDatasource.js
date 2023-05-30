@@ -11,29 +11,37 @@ class EtherDataSource extends RESTDataSource {
   }
 
   async etherBalanceByAddress() {
-    return this.get 
-    (
-      '',
-            {
-            module: 'account',
-            action: 'balance',
-            address: `${eth_address}`,
-             apiKey: process.env.ETHERSCAN_API
-            },
-            {
-                headers: {
-                    accept: "application/json",
-                    "X-API-KEY": process.env.ETHERSCAN_API,
-                },
-            }
-      //'https://api.etherscan.io/api?module=account&action=balance&address=0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045&tag=latest&apikey=7KXPGFHGS6H3F163VUT2N1177FXWNR3JQK'
-    ); 
+    return this.get
+      (
+        '',
+        {
+          module: 'account',
+          action: 'balance',
+          address: `${eth_address}`,
+          apiKey: process.env.ETHERSCAN_API
+        },
+        {
+          headers: {
+            accept: "application/json",
+          },
+        }
+      );
   }
 
   async totalSupplyOfEther() {
     return this.get
       (
-        'https://api.etherscan.io/api?module=stats&action=ethsupply&apikey=7KXPGFHGS6H3F163VUT2N1177FXWNR3JQK'
+        '',
+        {
+          module: 'stats',
+          action: 'ethsupply',
+          apiKey: process.env.ETHERSCAN_API
+        },
+        {
+          headers: {
+            accept: "application/json",
+          },
+        }
       );
   }
 }
